@@ -1,0 +1,140 @@
+<br>
+<br>
+<ngb-tabset [destroyOnHide]="false">
+
+  <ngb-tab title="Scope of Work">
+    <ng-template ngbTabContent>
+      <app-scope-of-work></app-scope-of-work>
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab title="PLC">
+    <ng-template ngbTabContent>
+      <app-cp-plc></app-cp-plc>
+      <br>
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab title="HMI">
+    <ng-template ngbTabContent>
+      <app-cp-hmi></app-cp-hmi>
+      <br>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+
+<ng-template #pid let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">P&ID</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <img class="img-responsive container" src="assets/images/PID_Drawing.png">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+  
+<ng-template #funcSpec let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">TP04-SEQ15-LDPE</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <app-func-spec></app-func-spec>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+<hr> 
+<ng-template #io let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">IO Database</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <app-io-database></app-io-database>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #sequence let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Sequence</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img class="img-responsive container" src="assets/images/sequence.png">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #tagNameConv let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Sequence</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img class="img-responsive container" src="assets/images/PLC_Tag_Naming_Convention.png">
+    <div class="row">
+      <div class="col-md-3 offset-md-1">
+        <h6>Area Number</h6>
+        <ul>
+          <li>04 Alginate</li>
+        </ul>
+      </div>
+      <div class="col-md-3"> 
+        <h6>Equipment</h6>
+        <ul>
+          <li>AV Air Valve</li>
+          <li>BV Butterfly Valve</li>
+          <li>PU Pump</li>
+          <li>TK Tank</li>
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <h6>Instruments</h6>
+        <ul>
+          <li>AUX Motor Auxillary</li>
+          <li>FLT Motor Fault</li>
+          <li>LSH Level Switch High</li>
+          <li>MDS Motor Disconnect Switch</li>
+          <li>RUN Motor Run</li>
+          <li>SVO Solenoid Valve Open</li>
+          <li>ZSC Closed Feedback</li>
+          <li>ZSO Open Feedback</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<div class="navbar fixed-bottom navbar-light bg-light justify-content-center" style="background-color: #e3f2fd;"> 
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(pid)">P&ID</button>
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openScrollableContent(funcSpec)">Functional Specification</button>
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(io)">IO Database</button>
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(sequence)">Sequence</button>
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(tagNameConv)">Tag Name Convention</button>
+</div>
+
+ 
+

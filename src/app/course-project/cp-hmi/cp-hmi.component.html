@@ -1,0 +1,113 @@
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Update license information</ng-template>
+        <ul>
+            <li>Open up 'Archestra License Manager'</li>
+            <li>Click No for 'Do you want to configure this computer for remote license management?'</li>
+            <li>Right click on the computer with your computer name and select 'install license file'</li>
+            <li>Browse to the license file</li>
+        </ul>
+        <div>
+          <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Restore Galaxy backup</ng-template>
+        <ul>
+            <li>Copy the Galaxy backup file from the Course Project folder into: C:\Program Files (x86)\ArchestrA\Framework\Bin\BackupGalaxies</li>
+            <li>Open up Archestra IDE</li>
+            <li>Select the button on the right 'New Galaxy'</li>
+            <li>Update Galaxy name</li>
+            <li>Update Galaxy type</li>
+            <li>Select the Create button</li>
+            <li>Click the Connect button</li>
+        </ul>
+        <div>
+          <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+          <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Finding training items and migrating application</ng-template> 
+            <p>Find training files by searching for 'training'</p>
+            <p>Migrate $Training_ViewApp</p>
+            <p>Do not convert</p>
+        <div>
+          <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+          <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="forthFormGroup">
+        <ng-template matStepLabel>Create new project and configure suite-link clients and DA Server</ng-template>
+            <p>In Derivation view right-click on \$h_Area and select New -> Instance. Label the Project Area as (Training_PLC01)).</p>
+            <p>In Derivation view right-click on \$h_ABSuiteLinkClient and select New -> Instance. Label the Project Suite-Link as (Training_SL_PLC01).</p>
+            <p>Switch back to Deployment View. By default these newly created instances will be in the Unassigned Host folder. Select and drag these items within<br>
+                 the (TrainingTagEngine) instance. Next, referring to the images below configure the Areas and Suite-Links communication path.</p>
+            <p>The DA Server, located in the SMC (System Management Console) is the middle man between the HMI and the PLC program. <br>
+                The first image points the DA Server to the PLC program by its IP address. The second image points the DA Servers to the Areas created in ArchestrA.</p>
+            
+        <div>
+          <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+          <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+        </div>
+    </mat-step>
+  
+    <mat-step [stepControl]="fgFive">
+        <ng-template matStepLabel>Troubleshooting using the SMC</ng-template>
+            <p>The SMC also provides other essential tools for development. In the first image the log viewer is used to identify any <br>
+                performance warnings or errors within ArchestrA. In the second image the Platform Manager is used to check a status of<br>
+                 platform such as Running on Scan or offline.</p>
+        <div>
+          <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+          <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+        </div>
+    </mat-step>
+  
+    <mat-step [stepControl]="fgSix">
+        <ng-template matStepLabel>Creating Galaxy backups</ng-template> 
+            <p>Galaxy Backups is a very important part of the development process. Backups should be made daily when there is heavy HMI development.<br>
+                 Within the SMC -> Galaxy Database Manager right-click on the HPN_Olathe_Training select Backup. Depending on the size of the galaxy a backup<br>
+                  should around 10 minutes. </p>
+        <div>
+          <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+          <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+        </div>
+    </mat-step>
+  
+    <mat-step [stepControl]="fgSeven">
+      <ng-template matStepLabel>Create a new HMI screen and add graphics based on project drawings</ng-template> 
+        <ul>
+            <li>To create a new screen Right-click on HMI Screens and select New -> Symbol.</li>
+            <li>Rename the new symbol to the screen name “s_TrainingWindow”</li>
+            <li>Open the new screen and begin added graphics followed by inserting tag references when needs. Graphics are located in “HPN Graphics”.</li>
+            <li>Once screen development is complete, open “\$Training_ViewApp”. This will open WindowMaker.</li>
+        </ul>
+        <p>The next step is to reference is the new screen within the HMI application. Right-Click in the “Windows” box and select “New”. Using the Window<br>
+             properties in the image below, insert the sane credentials. Once complete this will bring up a blank screen. In the Toolbar above click on the<br>
+              Embedded ArchestrA Graphic icon and import the entire symbol that is the screen titled “S_TrainingWindow”. Once complete save and close WindowMaker.</p>
+      <div>
+        <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+        <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+      </div>
+    </mat-step>
+  
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+        <button mat-button (click)="stepper.reset()" class="btn btn-outline-primary btn-sm">Reset</button>
+      </div>
+    </mat-step>
+</mat-vertical-stepper>
+  

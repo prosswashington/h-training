@@ -1,0 +1,112 @@
+<p><strong>Home</strong></p>
+<ul>
+    <li>The sequencer advances to the next step when the Operator turns the LDPE Tank (TP04_TK509) Infeed and Discharge Online, turns the Batch Tank (TP04_TK506) Infeed Offline and issues a HMI Start Command.</li>
+</ul>
+
+<p><strong>Check Pre-Start Conditions</strong></p>
+<ul>
+    <li>The following Conditions are verified to be ready in order for the sequencer to proceed</li>
+    <ul>
+        <li>TP04_TK509 Ready</li>
+        <li>TP04_TK509_MT01 Ready</li>
+        <li>TP04_TK509_WS01 Ready</li>
+        <ul>
+            <li>Weight Greater or Equal to 500 lbs.</li>
+        </ul>
+        <li>TP04_BV551 (NC) Ready</li>
+        <li>TP04_PU510_MT01 Ready</li>
+        <li>TP04_AV556 (NC) Ready</li>
+        <li>TP04_TK506 Ready</li>
+        <li>TP04_TK506_MT01 Ready</li>
+        <li>TP04_TK506_WS01 Ready</li>
+    </ul>
+    <li>Abort Command Available to jump the sequencer back to Step 1  </li>
+</ul>
+
+<p><strong>Set Valve Path for Recirculation</strong></p>
+<ul>
+    <li>The following Conditions are verified to step the sequencer</li>
+    <ul>
+        <li>TP04_BV551.Opn</li>
+        <li>TP04_AV556.Cls</li>
+    </ul>
+</ul>
+
+<p><strong>Time Delay (10 Seconds)</strong></p>
+
+<p><strong>Start Discharge Pump</strong></p>
+<ul>
+    <li>Initiate Auto Start Request for (TP04_PU510_MT01)</li>
+</ul>
+
+<p><strong>Recirculation - Wait for Stop Conditions</strong></p>
+<ul>
+    <li>Step Sequencer when any of the conditions are met</li>
+    <ul>
+        <li>LDPE Tank (TP04_TK509) Infeed or Discharge Offline</li>
+        <li>Operator issues a HMI Stop Command</li>
+    </ul>
+    <li>Jump Sequencer to Step 21 when the following conditions are met</li>
+    <ul>
+        <li>Batch Tank (TP04_TK506) Infeed Online AND Tank Weight is Less Than 3250 lbs.</li>
+    </ul>
+</ul>
+
+<p><strong>Stop Discharge Pump</strong></p>
+<ul>
+    <li>Release Auto Start Request for (TP04_PU510_MT01)</li>
+</ul>
+
+<p><strong>Release Recirculation Valve Path</strong></p>
+<ul>
+    <li>Return valves to their default state</li>
+</ul>
+
+<p><strong>Jump to Step 1 - Home</strong></p>
+<hr>
+
+<p><strong>STEP 21 – Stop Discharge Pump</strong></p>
+<ul>
+    <li>Release Auto Start Request for (TP04_PU510_MT01)</li>
+</ul>
+
+<p><strong>Set Valve Path for Batch Tank</strong></p>
+<ul>
+    <li>The following Conditions are verified in order to step the sequencer</li>
+    <ul>
+        <li>TP04_BV551.Opn</li>
+        <li>TP04_AV556.Opn</li>
+    </ul>
+</ul>
+
+<p><strong>Time Delay (10 Seconds)</strong></p>
+
+<p><strong>Start Discharge Pump</strong></p>
+<ul>
+    <li>Initiate Auto Start Request for (TP04_PU510_MT01)</li>
+</ul>
+
+<p><strong>Transfer - Wait for Stop Conditions</strong></p>
+<ul>
+  <li>Continue filling Batch Thank until one of the following conditions are met</li>
+  <ul>
+      <li>Batch Tank (TP04_TK506) Infeed Offline</li>
+      <li>LDPE Tank (TP04_TK509) Weight is Less Than 50 lbs.</li>
+      <li>Batch Tank (TP04_TK506) Weight is Greater Than 3750 lbs.</li>
+      <li>Operator issues a HMI Stop Command</li>
+  </ul>
+  <li>Jump to Step when LDPE Tank (TP04_509) Discharge Offline</li>
+  <li>When SQ1.10 is energized or if (TP04_TK509) Discharge is Offline During Transfer, take (TP04_TK506) Infeed Offline</li>
+</ul>
+
+<p><strong>Stop Discharge Pump</strong></p>
+<ul>
+    <li>Release Auto Start Request for (TP04_PU510_MT01)</li>
+</ul>
+
+<p><strong>Release Batch Tank Valve Path</strong></p>
+<ul>
+    <li>Return valves to their default state</li>
+</ul>
+
+<p><strong>Jump to Step 3</strong></p>

@@ -1,0 +1,28 @@
+.jumbotron {
+    background-color:    #E3F2FD; 
+    text-align: center;
+}
+
+.homecardcontent {
+    padding: 10px;
+}
+
+.homecard {
+    margin: 10px;
+}
+
+.material-icons.md-84 { 
+    font-size: 84px; 
+    padding-top: 10px;
+    color: #0D47A1;
+}
+
+ul.no_bullet {
+    list-style-type: none;
+}
+
+li:before {
+    content: '\002714';
+    margin-left: -20px;
+    margin-right: 10px;
+}

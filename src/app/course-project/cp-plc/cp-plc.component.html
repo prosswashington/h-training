@@ -1,0 +1,272 @@
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Locate and open the 'Hills_Training' RSLogix 5000 PLC file</ng-template>
+      <div>
+        <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>The Safety Task is no longer needed - Delete</ng-template>
+      <p>See <strong>'How-to Series: Deleting a Program in RSLogix 5000'</strong> video for details on how to do delete a program.</p>
+      <div>
+        <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+        <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Several UDTs and AOIs will be needed for this project. Create the Tank udt.</ng-template> 
+      <div class="row">
+        <div class="col-md-2">
+          <hr>
+          <p>Name: udtTank 
+            <br>Description: Tank UDT</p>
+          <hr>
+        </div>
+        <div class="col-md-10">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Data Type</th>
+              <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let member of members; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                {{ member.name }}
+              </td>
+              <td>{{ member.datatype }}</td>
+              <td>{{ member.description }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+        <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="forthFormGroup">
+      <ng-template matStepLabel>Import the remaining UDTs and AOIs</ng-template>
+      <div class="row">
+        <div class="col-md-6">
+          <br>
+          <p>UDTs</p>
+          <ul>
+            <li>udt1794IA16</li>
+            <li>udt1794IB32</li>
+            <li>udt1794IE12</li>
+            <li>udt1794OA16</li>
+            <li>udt1794OB16</li>
+            <li>udtAI</li>
+            <li>udtAIChDef</li>
+            <li>udtAirSolenoid</li>
+            <li>udtAO</li>
+            <li>udtAOChDef</li>
+            <li>udtMettlerToledoWS</li>
+            <li>udtModuleStatus</li>
+            <li>udtMotor</li>
+            <li>udtMotorControl</li>
+            <li>udtNotUsed</li>
+            <li>udtPhaseMotorControl</li>
+            <li>udtPhaseValveControl</li>
+            <li>udtSequencer</li>
+            <li>udtSSValve</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <br>
+          <p>AOIs</p>
+          <ul>
+            <li>aoiAI</li>
+            <li>aoiAlarm</li>
+            <li>aoiAO</li>
+            <li>aoiAverage</li>
+            <li>aoiHOA</li>
+            <li>aoiMettlerToledoWS</li>
+            <li>aoiModuleStatus</li>
+            <li>aoiMotor</li>
+            <li>aoiRoc</li>
+            <li>aoiRTC</li>
+            <li>aoiSequencer</li>
+            <li>aoiSSValve</li>
+            <li>aoiTank</li>
+            <li>aoi_1794IA16</li>
+            <li>aoi_1794IB32</li>
+            <li>aoi_1794IE12</li>
+            <li>aoi_1794OA16</li>
+            <li>aoi_1794OB16</li>
+            <li>aoi_WSAlarm</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div>
+        <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+        <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+      </div>
+  </mat-step>
+
+  <mat-step [stepControl]="fgFive">
+      <ng-template matStepLabel>Create / Configure IO Configuration Tree</ng-template>
+      <div class="row">
+        <div class="col-md-6">
+          <p>IO Tree Blank</p>
+          <img class="img-responsive img-thumbnail" src="assets/images/io_tree_blank.png" alt="IO Tree Blank">
+        </div>
+        <div class="col-md-6">
+          <p>IO Tree Complete</p>
+          <img class="img-responsive img-thumbnail" src="assets/images/io_tree_complete.png"alt="IO Tree Complete">
+        </div>
+      </div>    
+      <div>
+        <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+        <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+      </div>
+  </mat-step>
+
+  <mat-step [stepControl]="fgSix">
+      <ng-template matStepLabel>Create required Controller Tags</ng-template> 
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Data Type</th>
+            <th scope="col">Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let tag of tags; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ tag.name }}
+            </td>
+            <td>{{ tag.datatype }}</td>
+            <td>{{ tag.description }}</td>
+          </tr>
+          </tbody>
+        </table>
+      <div>
+        <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+        <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+      </div>
+  </mat-step>
+
+  <mat-step [stepControl]="fgSeven">
+    <ng-template matStepLabel>Setup Programs</ng-template> 
+      <div class="row">
+        <div class="col-md-4 offset-md-2">
+          <p><strong>Create required programs</strong></p>
+          <ul>
+            <li>Setup</li>
+            <li>MainProgram</li>
+            <li>Communications</li>
+          </ul>    
+        </div>
+        <div class="col-md-6">
+          <p><strong>Import provided routines</strong></p>
+          <p>Program: Setup</p>
+          <ul>
+            <li>RTC</li>
+            <li>TP04_SEQ15_LDPE_TankXfer_Setup</li>
+          </ul>
+          <br>
+          <p>MainProgram</p>
+          <ul>
+            <li>TP04_SEQ15_LDPE_TankXfer_Seq</li>
+          </ul>
+        </div>
+      </div>
+    <div>
+      <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+      <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="fgEight">
+    <ng-template matStepLabel>Create / Update routines</ng-template> 
+      <div class="row">
+        <div class="col-md-4">
+          <p>Program: Setup</p>
+          <ul>
+            <li>MainRoutine - Update with JSRs</li>
+            <li>MapModule - add AOIs</li>
+            <li>ModuleStatus</li>
+          </ul>
+          
+        </div>
+        <div class="col-md-8">
+          <p>Program: MainProgram</p>
+          <ul>
+            <li>MainRoutine - Add JSRs</li>
+            <li>TP04_SEQ15_LDPE_TankXfer_Control</li>
+            <ul>
+              <li>Create required AOIs</li>
+              <ul>
+                <li>TP04_TK509_MT01_AOI</li>
+                <li>TP04_TK509_AOI</li>
+                <li>TP04_TK509_WS01_AOI</li>
+                <li>TP04_BV551_AOI</li>
+                <li>TP04_PU510_MT01_AOI</li>
+                <li>TP04_AV556_AOI</li>
+                <li>TP04_TK506_MT01_AOI</li>
+                <li>TP04_TK506_AOI</li>
+                <li>TP04_TK506_WS01_AOI</li>
+              </ul>
+              <li>Configure according to functional specifications</li>
+              <ul>
+                <li>Tank 509 weight greater than or equal to 400 then Mixer1 auto start request</li>
+                <li>TK509 MT01 Interlock always energized</li>
+                <li>(Sequence -> Set Valve Path for Recirc or Set Valve Path for Batch Tank) BV551 Auto Open Request</li>
+                <li>BV551 Interlock always energized</li>
+                <li>(Sequence -> Start Discharge Pump) then PU510 Auto Start Req</li>
+                <li>((Sequence: NOT Set Valve Path for Batch Tank) + Discharge Valve Open Status + NOT Recirc Valve Status) OR ((Sequence: Set Valve Path for Batch Tank) + Discharge Valve Open Status + Recirc Valve Open Status) THEN Pump 510 Interlock</li>
+                <li>(Sequence: Set Valve Path for Batch Tank) then Recirc Valve Automatic Open Request</li>
+                <li>Recirc Valve Interlock Indication always energized</li>
+                <li>TK506 weight greater than or equal to 400 then Mixer auto start request</li>
+                <li>TK506 motor interlock always energized</li>
+              </ul>
+            </ul>
+          </ul>
+        </div>
+        <p>See pdf for additional details.</p>
+      </div>
+    <div>
+      <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+      <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="fgNine">
+    <ng-template matStepLabel>Verify Controller</ng-template> 
+      <p>Verify the controller and correct any issues.</p>
+    <div>
+      <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+      <button mat-button matStepperNext class="btn btn-outline-primary btn-sm">Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious class="btn btn-outline-primary btn-sm">Back</button>
+      <button mat-button (click)="stepper.reset()" class="btn btn-outline-primary btn-sm">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
